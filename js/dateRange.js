@@ -7,6 +7,20 @@ const earliestDate = '1995-06-16';
 // Get today's date in YYYY-MM-DD format (required by date inputs)
 const today = new Date().toISOString().split('T')[0];
 
+function clampDateValue(input) {
+  // Keep date value within input min/max so spinners cannot go past bounds
+  if (!input.value) return;
+
+  if (input.min && input.value < input.min) {
+    input.value = input.min;
+    return;
+  }
+
+  if (input.max && input.value > input.max) {
+    input.value = input.max;
+  }
+}
+
 function setupDateInputs(startInput, endInput) {
   // Restrict date selection range from NASA's first image to today
   startInput.min = earliestDate;
@@ -22,9 +36,23 @@ function setupDateInputs(startInput, endInput) {
 
   // Automatically adjust end date to show exactly 9 days of images
   startInput.addEventListener('change', () => {
+    clampDateValue(startInput);
+
     const startDate = new Date(startInput.value);
     const endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 8);
     endInput.value = endDate > new Date(today) ? today : endDate.toISOString().split('T')[0];
+    clampDateValue(endInput);
+  });
+
+  // Clamp both inputs while users type, arrow through segments, or use spinners
+  [startInput, endInput].forEach((input) => {
+    input.addEventListener('input', () => {
+      clampDateValue(input);
+    });
+
+    input.addEventListener('change', () => {
+      clampDateValue(input);
+    });
   });
 }
