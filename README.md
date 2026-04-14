@@ -1,11 +1,26 @@
-# Project 7: NASA API - Space Explorer App
-NASA releases a new "Astronomy Picture of the Day" (APOD) every day—spotlighting breathtaking images of galaxies, stars, planets, and more.
+# NASA Space Explorer
 
-Your task is to build an interactive web app that fetches and displays these photos using [NASA's API](https://api.nasa.gov/). Users will pick a date range and instantly view stunning photos from across the cosmos, along with titles and descriptions.
+NASA Space Explorer is a web application that lets you explore NASA's Astronomy Picture of the Day (APOD) archive. Choose a start and end date, then load a gallery of space images and videos with their titles, dates, and descriptions.
 
-You'll get to use your skills to build something that's actually connected to real-world data from one of the most iconic organizations in the world.
+The app fetches live data from NASA's APOD API and displays the results in a responsive gallery. Clicking an item opens a modal with more details, and video entries can be viewed directly in the app or opened in a new tab.
 
-## Starter Files
-- The provided files include a NASA logo, date inputs, a button, a placeholder for your gallery, and basic layout and styling to help you get started.
-- It also includes built-in logic (in `dateRange.js`) to handle the valid APOD date range—from June 16, 1995 to today. No need to modify it.
-- All your custom JavaScript should go in `script.js`. That's where you'll write the code that fetches data and displays your gallery.
+## Technologies Used
+
+- HTML for the page structure
+- CSS for layout and styling
+- JavaScript for fetching data, rendering the gallery, and handling the modal interactions
+- NASA APOD API for the space imagery and metadata
+- `dateRange.js` for setting valid date limits and default dates
+
+## How It Works
+
+1. Select a start date and end date.
+2. Click the button to fetch APOD entries from NASA.
+3. Browse the gallery and open any item for more details.
+
+## Project Files
+
+- `index.html` contains the page structure.
+- `style.css` contains the visual styles.
+- `js/script.js` contains the app logic.
+- `js/dateRange.js` sets the allowed date range.
